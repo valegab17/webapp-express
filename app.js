@@ -13,7 +13,7 @@ const notFound = require("./middlewares/notFound");
 app.use(express.static('public'))
 
 //rotta di home app
-app.get('/', (req,res)=>{
+app.get('/api', (req,res)=>{
     res.send("<h1>Home dell'app movies </h1>")
 })
 
