@@ -1,9 +1,14 @@
 const express = require('express');
 const app = express();
+const cors = require("cors");
 const port = process.env.PORT;
 const connection= require('./data/db');
 
+//importo il middleware per il cors
 //import router movies
+app.use(cors({
+    oriigin:'http://localhost:5173'
+}));
 const movieRouters = require('./routers/movieRouters')
 //import del middleware di gestione errore interno 500 
 const errorsHandler = require("./middlewares/errorsHandler");
