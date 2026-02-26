@@ -14,9 +14,13 @@ const movieRouters = require('./routers/movieRouters')
 const errorsHandler = require("./middlewares/errorsHandler");
 //import dell'errore 404 not found
 const notFound = require("./middlewares/notFound");
-
+//import del middleware di gestione di path img
+const imagePathMid = require("./middlewares/imagePath");
 //attivazione della cartella public per uso file statici 
 app.use(express.static('public'))
+
+//attivazione del middleware di gestione path
+app.use(imagePathMid);
 
 //rotta di home app
 app.get('/api', (req,res)=>{

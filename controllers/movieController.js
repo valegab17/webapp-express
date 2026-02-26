@@ -7,11 +7,22 @@ function index(req, res) {
     //preparo la query
     const sql = 'SELECT * FROM movies';
 
-    //eseguo
+
+    // Eseguo la query
     connection.query(sql, (err, results) => {
-        if (err) return res.status(500).json({ error: 'Data base query failed' });
-        res.json(results);
+        if (err) return res.status(500).json({ error: 'Database query failed' });
+
+        // Mappo i risultati del DB aggiungendo il percorso dell'immagine
+        const movies = results.map(movie => {
+            return {
+                ...movie,
+                image: req.imagePath + movie.image
+            }
+        })
+
+        res.json(movies);
     });
+
 }
 //funzione show
 function show(req, res) {
