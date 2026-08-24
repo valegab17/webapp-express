@@ -2,12 +2,12 @@ const express = require('express');
 const app = express();
 const cors = require("cors");
 const port = process.env.PORT;
-const connection= require('./data/db');
+const connection = require('./data/db');
 
 //importo il middleware per il cors
 //import router movies
 app.use(cors({
-    oriigin:'http://localhost:5173'
+    origin: 'http://localhost:5173'
 }));
 const movieRouters = require('./routers/movieRouters')
 //import del middleware di gestione errore interno 500 
@@ -23,7 +23,7 @@ app.use(express.static('public'))
 app.use(imagePathMid);
 
 //rotta di home app
-app.get('/api', (req,res)=>{
+app.get('/api', (req, res) => {
     res.send("<h1>Home dell'app movies </h1>")
 })
 
@@ -35,6 +35,6 @@ app.use(errorsHandler);
 //registriamo il middleware di 404
 app.use(notFound);
 
-app.listen(port, ()=>{
+app.listen(port, () => {
     console.log(`App listening on port ${port}`)
 })
